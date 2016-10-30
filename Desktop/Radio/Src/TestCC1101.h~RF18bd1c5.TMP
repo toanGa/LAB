@@ -1,0 +1,51 @@
+#include "CC1101.h"
+#define TEST_MODE SEND_MODE
+/*
+   CC1101 send data  */
+//#if TEST_MODE == SEND_MODE
+
+int x;
+void TestSPI(){
+	SPISendChar(x);
+}
+void TestIO(){
+	if(!Read(BUTTON_PORT,BUTTON_PIN)){
+		while(Read(BUTTON_PORT,BUTTON_PIN));
+		TogglePin(LED1_PORT,LED1_PIN);
+		Delay(100);
+	}
+}
+int main(){
+	//CC1101Setup();
+	unsigned char dataSend[1] = {'a'};
+	SystemConfig();
+	//CC1101Setup();
+	//unsigned char dataReceive[1];
+	unsigned char x = 0;
+	while(true){
+		//CC1101SendData(dataSend,1);
+		//Delay(2000);
+		SPISendChar(x);
+		x ++;
+		
+	}
+}
+
+//#elif TEST_MODE == RECEIVE_MODE
+/* cc1101 receive data ***/
+/*
+int main(){
+	CC1101Setup();
+	CC1101SetReceive();
+	unsigned char dataReceive[1];
+	CC1101ReceiveData(dataReceive);
+		if(*dataReceive == 'a'){
+			for(int i = 0; i < 10 ; i ++){
+				TogglePin(LED1_PORT,LED1_PIN);
+				Delay(300);
+			}
+		}
+	
+}
+*/
+//#endif

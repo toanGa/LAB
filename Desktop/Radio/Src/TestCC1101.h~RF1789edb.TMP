@@ -1,0 +1,34 @@
+#include "CC1101.h"
+#define TEST_MODE SEND_MODE
+/*
+   CC1101 send data  */
+//#if TEST_MODE == SEND_MODE
+int main(){
+	CC1101Setup();
+	unsigned char dataSend[1] = {'a'};
+	unsigned char dataReceive[1];
+	while(true){
+		CC1101SendData(dataSend,1);
+		Delay(2000);
+		
+		
+	}
+}
+
+//#elif TEST_MODE == RECEIVE_MODE
+/* cc1101 receive data ***/
+/*
+int main(){
+	CC1101Setup();
+	CC1101SetReceive();
+	CC1101ReceiveData(dataReceive);
+		if(*dataReceive == 'a'){
+			for(int i = 0; i < 10 ; i ++){
+				TogglePin(LED1_PORT,LED1_PIN);
+				Delay(300);
+			}
+		}
+	
+}
+*/
+//#endif
